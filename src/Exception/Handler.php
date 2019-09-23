@@ -179,7 +179,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
         $response = $this->newResponseArray();
 
         array_walk_recursive($response, function (&$value, $key) use ($exception, $replacements) {
-            if (starts_with($value, ':') && isset($replacements[$value])) {
+            if (Str::startsWith($value, ':') && isset($replacements[$value])) {
                 $value = $replacements[$value];
             }
         });
@@ -301,7 +301,7 @@ class Handler implements ExceptionHandler, IlluminateExceptionHandler
 
         return array_filter($input, function ($value) {
             if (is_string($value)) {
-                return ! starts_with($value, ':');
+                return ! Str::startsWith($value, ':');
             }
 
             return true;

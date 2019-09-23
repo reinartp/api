@@ -503,7 +503,7 @@ class Dispatcher
 
         $uri = trim($uri, '/');
 
-        if (starts_with($uri, $this->prefix)) {
+        if (Str::startsWith($uri, $this->prefix)) {
             return $uri;
         }
 
